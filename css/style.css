@@ -1,0 +1,120 @@
+.text-center li {
+  list-style-type: none;
+}
+
+#header-row, #info-row {
+  /*background-color: rgba(149, 159, 175, .6);
+  border-style: ridge;
+  border-radius: 8px;*/
+  color: black;
+}
+
+#header-block {
+  background-color: rgba(54, 83, 132, .6);
+  border: 1px;
+  border-radius: 30px;
+  border-style: ridge;
+  box-shadow: 7px 7px 10px black;
+}
+
+#header-row, #info-row {
+  padding-bottom: 20px;
+  margin: 0 40px;  
+}
+
+#header-row {
+  margin-top: 20px;  
+}
+
+#info-row {
+  padding-top: 20px;  
+}
+
+#header {
+  margin: 20px;
+}
+
+#site-container {
+  background-image: url("http://www.walldevil.com/wallpapers/a65/wallpaper-wood-textures-abstract.jpg");
+}
+
+/*https://s-media-cache-ak0.pinimg.com/originals/3c/24/46/3c24462450c2a902bf7e18f3d9aada81.jpg*/
+
+#header-title {
+  font-family: Lucidatypewriter, monospace;
+  font-weight: 500;
+  font-variant: small-caps;
+  color: black;
+}
+
+#status-check {
+  font-family: Times New Roman;
+}
+
+#channel-links, .top-links {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+#myStatus {
+  padding-bottom: 5px;
+}
+
+#gamesInfo, h3, #stream, h2 {
+  color: black;
+}
+
+#overlay {
+  height: 90%;
+  width: 83%;
+  background-color: rgba(149, 159, 175, .6);
+  border-style: ridge;
+  border-radius: 8px;
+}
+
+.labels {
+  border: 1px;
+  border-style: ridge;
+  padding: 5px;
+  height: 90%;
+  width: 100%;
+  border-radius: 30px;
+  font-family: Lucidatypewriter, monospace;
+  font-variant: small-caps;
+  background-color: rgba(72, 91, 124, .6);
+  box-shadow: 7px 7px 10px black;
+}
+
+#userInfo {
+  font-family: Helvetica Narrow, sans-serif;
+  font-size: 16px;
+}
+
+.pics {
+  border: 2px;
+  border-style: outset;
+  border-radius: 50px;
+  box-shadow: 7px 7px 10px black;
+}
+
+.live-pic {
+  margin-top: 25%;
+  height: 40%;
+  width: 40%;
+  border: 2px;
+  border-style: outset;
+  border-radius: 10px;
+  box-shadow: 7px 7px 10px black;
+}
+
+.how-to-text, #text-field-2, #text-field-3 {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+}
+
+.large-pics {
+  height: 80%;
+  width: 80%;
+}

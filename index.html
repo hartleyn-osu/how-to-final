@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>How-To-FINAL</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class="container-fluid" id="site-container">  
+  <div class="row">
+   <div class="col-md-1">
+   </div>
+   <div id="overlay" class="col-md-10">
+    <div class="row">
+      <div class="col-md-1">
+      </div>  
+      <div class="col-md-10">
+       <div class="how-to-text"> 
+         <br><div class="text-center"><h1>Twitch API - How To Guide</h1><br>
+         <h5>Nicholas Hartley</h5
+         </div><br>
+         <p>Twitch.tv is a streaming service that is community driven and highly enjoyable to use. It is only fitting that Twitch’s web API is similarly enjoyable to learn and use. Twitch provides excellent, thorough documentation on the API which explains the full breadth of its features and how to get started using them using them (https://github.com/justintv/Twitch-API). This page will focus on the actual implementation and API calls being made in jQuery. 
+          <br>
+          <h3>Setting up API calls</h3>
+          <br>
+The basic structure of jQuery API calls is as follows:  <br><br>
+          <img src="https://farm6.staticflickr.com/5480/31038220426_9432d00cea_m.jpg" id="ex-pic-1">
+          <br><br>
+          The ‘type’ field takes the type of server request you wish to make; either ‘GET’, ‘POST’, ‘PUT’, or ‘DELETE’. The ‘url’ field takes the the URL string where the request is being sent. The base URL for all Twitch API calls is ‘https://api.twitch.tv/kraken/‘. The context of this API the ‘headers’ field takes the client ID that Twitch provides after the developer registers their application for use with the API. The ‘success’ field is where the browser will look for a function that will take the JSON response as input once the call has been successful.
+          <br>
+          <h3>User Stream Status Call</h3><br>See “I am currently ____” message in the "My Follow List" header below for example result.
+          <br><br>
+          <img src="https://farm6.staticflickr.com/5587/30931608662_9b91aafed3_b.jpg" id="ex-pic-2" class="large-pics">
+          <br><br>
+          The first API call made on this page is a stream status check call for my personal twitch account. The purpose of the call is to determine whether or not my channel is currently streaming. In order to successfully complete the API call, I had to appropriately fill in the previously explained API call shell. The call ‘type’ is ‘GET’ because we are retrieving information from the server. The ‘url’ contains the previously stated base URL for the Twitch API plus ‘/streams/[channel name (nick_lenoir in this instance)]’. The ‘headers’ field contains my client ID for the application. Finally, in the ‘success’ field, I have written a function that takes the response JSON as input. By examining the example response JSON provided in the API’s <a href="https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-streamschannel">documentation</a>, I could see that if a user is offline the ‘stream’ field will contain ‘null’. However, if the user is currently streaming, the response JSON will contain a ‘stream’ field populated with information on the stream. Using this knowledge, I constructed an ‘if-else’ statement that prepends the appropriate HTML string to the HTML file, thus relaying my current streaming status to the page.
+        </p>
+       </div>    
+      </div>
+      <div class="col-md-1">
+      </div>  
+     </div>
+    <div id="header" class="text-center">
+     <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6" id="header-block">
+      <h1 id="header-title">My Follow List</h1>
+      <a href="https://www.twitch.tv/nick_lenoir" target="blank">
+        <h2 id="myStatus"></h2>
+      </a>
+      </div> 
+      <div class="col-md-3">
+      </div>  
+     </div>  
+    </div>
+    <div class="row" id="header-row">
+      <h1>
+        <div class="text-center">
+          <div class="col-md-4">
+            <div class="labels">Logo</div> 
+          </div>
+          <div class="col-md-4">
+            <div class="labels">Display Name</div>
+          </div>
+          <div class="col-md-4">
+            <div class="labels">Status</div>
+          </div>
+        </div>  
+      </h1>
+    </div>
+    <div id="userInfo">
+    <!-- *********************
+         FOLLOW LIST USER INFO 
+         ********************* -->
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10" id="text-field-2">
+          <p>
+            <h3>Follow List Call</h3><br>See information under the ‘logo’, ‘display name’, and ‘status’ labels above for example results.<br><br>
+            The purpose of this API call is to retrieve information about the channels followed by an account (in this case mine).<br><br>
+            <img src="https://farm6.staticflickr.com/5327/31073968225_8b2ed4cd2a_b.jpg" class="large-pics"><br><br>
+            As with the previous API call, the call ‘type’ is ‘GET’ because we are retrieving information. Also, the ‘headers’ field is the same (and will remain the same within the coming examples). However, the ‘url’ field requires an entirely different URL string for this call (base URL + ‘/users/[channel name]/follows/channels’). The function within the ‘success’ field is set up in the same fashion as the last (and all other example calls), but the actions performed in this function are vastly different. Firstly, because I follow multiple channels, the response JSON for this call contains an array of objects (data5.follows in the example above). Each object represents a channel that is followed and contains information on that particular channel (example JSON response: https://github.com/justintv/Twitch-API/blob/master/v3_resources/follows.md#get-usersuserfollowschannels). In order to access each object in the JSON’s ‘follows’ array, a ‘for’ loop is implemented. As the ‘for’ loop steps through the array, various bits of information about the channel represented by the object are stored in variables. These variables are then formatted in an HTML string which is prepended to the HTML file, thus adding it to the page.
+          </p>
+        </div> 
+      <div class="col-md-1">
+      </div>
+    
+    </div>
+    <hr>
+    <div class="text-center">
+      <h2>Top Games on Twitch</h2><br>
+    </div>  
+    <div class="text-center" id="gamesInfo">
+    <!-- *********************
+               GAMES INFO 
+         ********************* -->
+    </div><hr>
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-10" id="text-field-3">
+        <p>
+        <h3>Top Games Call</h3><br>See titles under the ‘Top Games on Twitch’ header above for example results.<br><br>The purpose of this API call is to retrieve information on the top games currently being broadcasted on Twitch.<br><br>
+          <img src="https://farm6.staticflickr.com/5707/31073968275_ff8d58608e_b.jpg" class="large-pics"><br><br>
+        This is another ‘GET’ call being used to retrieve information. The URL is the base URL plus ‘/games/top’. The ‘headers’ field remains unchanged. Like the previous call, the JSON response provided for this call contains an array of objects (data6.top). The objects in this array represent each top game being streamed on Twitch. In order to access the information for each object in the array, another ‘for’ loop is implemented in the function in the call’s ‘success’ field. The game’s ‘name’ attribute is stored in a variable, which is then used to construct an HTML string containing the game’s title in list element - 'li' - tags. The string is then prepended to an unordered list in the HTML document.<br>
+        
+        <h3>Featured Streams Call</h3><br>See information under the ‘Featured Streams’ header below for example results.<br><br>The purpose of this API call is to retrieve information on the streams currently being featured on Twitch.<br><br>
+        <img src="https://farm6.staticflickr.com/5592/31073968195_2a942c5e34_b.jpg" class="large-pics"><br><br>
+        Like the previous examples, this call is a ‘GET’ call that is being used to retrieve information. The ‘headers’ field is unchanged. The URL for this call is the base URL plus ‘/streams/featured’. The function in this call’s ‘success’ field is the most extensive as this is the call that seeks to add the most information to the page. Once again, this call receives a JSON response with an array of objects (data7.featured), and, as such, its function implements a ‘for’ loop to access each object in the array. Inside the ‘for’ loop seven variables are created to store seven different pieces of information about each stream, which is represented by an object in the array. Those variables are then formatted inside an HTML string, which is then prepended to the HTML document and, thus, added to the page. 
+        </p>
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+    <div class="text-center">
+      <h2>Featured Streams</h2>
+    </div> 
+    <div id="stream">
+    <!-- *********************
+         FEATURED STREAMS INFO 
+         ********************* -->
+    </div>
+   </div>
+  <div class="col-md-1">
+  </div>
+ </div> 
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
